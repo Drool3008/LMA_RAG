@@ -319,3 +319,400 @@ title, because sub-rules are often a single clause whose subject lives in the he
 > One rule longer than the cap is divided at sentence boundaries, keeping its rule
 > number so gold-chunk matching still works.
 
+## Cell 8 — Pipeline 1 heading
+
+**What** Markdown only.
+
+**PDF** §2 Pipeline 1.
+
+> *Preserved (original markdown):*
+>
+> ## 2. Pipeline 1 — baseline retrieval (bi-encoder)
+>
+> Chunks are embedded independently, L2-normalised, and stored in a FAISS `IndexFlatIP`. Inner
+> product over L2-normalised vectors *is* cosine similarity, which satisfies the assignment's
+> "cosine similarity or inner product" either way.
+>
+> `IndexFlatIP` is **exact** brute-force search, chosen over an approximate index (IVF/HNSW) on
+> purpose: under an ANN index a gold chunk missing from the Top 10 could be blamed on
+> approximation error instead of on bi-encoder semantics, which would make every failure-mode
+> claim below unfalsifiable.
+
+## Cell 9 — Embeddings, FAISS index, `baseline_retrieve`
+
+**What** Builds `corpus_texts`, `corpus_emb` (L2-normalised), the FAISS `index`, and
+`baseline_retrieve(query, k=TOP_K_RETRIEVE)` returning 10 dicts with `chunk_id`, `bi_score`,
+`bi_rank`. `corpus_emb` is reused by the near-duplicate log in cell 22; `baseline_retrieve` is
+called by cells 16, 18 and 26.
+
+**Why** Inner product over normalised vectors *is* cosine, so one index satisfies the
+assignment's "cosine similarity or inner product" either way. `IndexFlatIP` is exact rather than
+approximate on purpose.
+
+**PDF** §2 P1.a (indexed with a dense bi-encoder) and §2 P1.b (Top 10 by cosine).
+
+**Gotcha** The candidate list this returns is the *same* list Pipeline 2 consumes — it is the
+pivot of the whole experiment, and cell 18 asserts it.
+
+> *Preserved (`baseline_retrieve` docstring):*
+>
+> Pipeline 1 retrieval. Returns the ranked candidate list that BOTH pipelines consume.
+
+## Cell 10 — Prompt template, answer cache, `generate`
+
+**What** Defines `PROMPT_TEMPLATE`, `build_prompt`, loads `_cache` from
+`results/answers_cache.json`, and defines `_cache_key`, `_cache_lookup`, `generate`. Cell 18
+calls `generate` twice per query.
+
+**Why** One template, one `build_prompt`, used by both pipelines — the only thing that differs
+between Answer 1 and Answer 2 is which three chunks get interpolated. The "answer only from the
+excerpts" instruction is what makes a retrieval omission *visible* as an omission.
+
+**PDF** §2 P1.c (Top 3 → Answer 1) and §2 P2.d (identical prompt structure → Answer 2).
+
+**Gotchas**
+- Cache key is `sha256(model + "\0" + prompt)`, so identical prompts collapse onto one entry:
+  when re-ranking leaves the Top 3 set unchanged, Answer 2 *is* Answer 1 by construction, at
+  zero API cost.
+- `_cache_lookup` searches the current model first and then the other candidates, so answers
+  generated before a quota fail-over stay usable instead of being silently regenerated.
+- `strict_model=True` restricts the lookup to the current model; cell 18 uses it to repair a
+  pair split across two models.
+
+> *Preserved (prompt banner):*
+>
+> ```
+> # The prompt. ONE template, used by both pipelines — the only thing that changes between
+> # Answer 1 and Answer 2 is which three chunks get interpolated, and that is asserted later.
+> # "Answer only from the excerpts" matters: without it the model can paper over a missing chunk
+> # from prior knowledge of the game, and an omission caused by retrieval would never surface.
+> ```
+>
+> *Preserved (cache comment):*
+>
+> ```
+> # Persistent answer cache keyed by (model, sha256(prompt)). An answer is generated once and
+> # then frozen on disk, so the committed analysis can never drift from the committed answers and
+> # re-running the notebook costs zero API quota.
+> ```
+>
+> *Preserved (`_cache_lookup` docstring):*
+>
+> Look for this prompt under the current model first, then under the other candidates.
+>
+> This matters because a model can run out of quota mid-project: answers generated earlier on
+> one model must stay usable instead of being silently regenerated on another, which would
+> both burn quota and make Answer 1 and Answer 2 come from different models within one query.
+> The entry records which model produced it, and the run loop asserts each query's pair agrees.
+>
+> *Preserved (`generate` docstring):*
+>
+> -> (answer, prompt, cache_hit, seconds, model). Identical prompts collapse onto one cache
+> entry, so when re-ranking leaves the Top 3 set unchanged, Answer 2 IS Answer 1, by
+> construction.
+
+## Cell 11 — Pipeline 2 heading
+
+**What** Markdown only.
+
+**PDF** §2 Pipeline 2.
+
+> *Preserved (original markdown):*
+>
+> ## 3. Pipeline 2 — cross-encoder re-ranking
+>
+> The cross-encoder receives the **same 10 candidates** the baseline produced — it never
+> re-retrieves — scores every `(query, chunk)` pair with joint self-attention over both texts,
+> and the list is re-sorted by that score. Scores are raw relevance logits, comparable *within*
+> one query's candidate list (all that re-sorting needs) but not across queries, so no absolute
+> threshold is used anywhere.
+
+## Cell 12 — `rerank`
+
+**What** Scores all `(query, chunk)` pairs for the candidate list with `cross_encoder.predict`,
+sorts descending by `ce_score`, stamps `ce_rank` 1..10. Called by cells 16, 18 and 26.
+
+**Why** It takes `candidates` as an argument and never retrieves anything itself, which is what
+makes "the same Top 10" structurally true rather than merely intended.
+
+**PDF** §2 P2.a (same candidates), P2.b (all 10 pairs through the cross-encoder), P2.c
+(re-sorted descending).
+
+**Gotcha** Cross-encoder outputs are unnormalised relevance logits — comparable *within* one
+query's list, not across queries. No absolute score threshold is used anywhere for that reason.
+
+> *Preserved (`rerank` docstring):*
+>
+> Pipeline 2. Consumes the baseline candidate list and returns it re-sorted.
+
+## Cell 13 — Query set heading
+
+**What** Markdown only.
+
+**PDF** §3.
+
+> *Preserved (original markdown):*
+>
+> ## 4. Query set
+>
+> Eight questions, hand-written after reading the rulebook, each with its **gold rule numbers**
+> recorded before any retrieval was run. They are deliberately phrased the way a player would
+> ask — paraphrases and synonyms rather than the rulebook's own section vocabulary — because a
+> query that quotes the heading verbatim tests nothing.
+>
+> The categories are the ones named in the assignment. Whether a category actually *produces* a
+> baseline failure in this document is an empirical result, reported as found: promotions,
+> no-ops and regressions all stay in the table.
+
+## Cell 14 — The queries and gold resolution
+
+**What** Defines `QUERIES` (Q1–Q10, each with `qid`, `category`, `question`, `gold_rules`,
+`why`), defines `gold_chunk_ids`, then resolves and asserts `gold_chunk_ids` for every query.
+Cell 18 iterates `QUERIES`.
+
+**Why** Gold rule numbers were written down *before* any retrieval ran, and the questions are
+phrased the way a player would ask rather than quoting section headings, because a query that
+repeats the heading verbatim tests nothing. Q9 and Q10 were added later from the cell 16 hunt;
+their `why` fields say so.
+
+**PDF** §3 (the failure queries and their categories).
+
+**Gotchas**
+- Gold is a *set*, not one chunk: overlap puts a rule in two adjacent chunks, and the rulebook
+  states some rules twice in different sections. "Gold rank" means the best-ranked member.
+- The `assert q["gold_chunk_ids"]` catches a gold rule number that matches no chunk, which would
+  otherwise look like a retrieval failure.
+- Q6's gold label (46.1) turned out to be the weaker of two statements of the same rule, which
+  is why its row reads "gold never entered Top 10" while both answers are correct — see
+  `NOTES.md` 3.10.
+
+> *Preserved (`gold_chunk_ids` docstring):*
+>
+> Chunk is gold if it contains any gold rule number. Overlap means a rule can appear in two
+> chunks, so this is a set, and 'best gold rank' means the best-ranked member of that set.
+
+## Cell 15 — Failure-hunt heading
+
+**What** Markdown only.
+
+**PDF** §3.
+
+> *Preserved (original markdown):*
+>
+> ## 4b. How the failure queries were found (retrieval only, no LLM calls)
+>
+> The first pass used eight hand-written questions and produced only **one** clean promotion:
+> five of the eight had the gold chunk at rank 1 or 2 already, so re-ranking had nothing to
+> repair. Rather than quietly reword those queries until they looked like wins, the search was
+> made explicit and cheap: 16 candidate questions, each with its gold chunk identified by the
+> **authoritative sentence** (a regex over the chunk text) instead of a remembered rule number,
+> scored through both pipelines. Retrieval and re-ranking cost no API quota, so this sweep is
+> free and fully reproducible.
+>
+> Q9 and Q10 came out of this table. Everything else stays in it, including the cases where
+> re-ranking **hurt** or could not help at all — those are findings, not failures to hide.
+
+## Cell 16 — The retrieval-only failure hunt
+
+**What** Defines `HUNT_CANDIDATES` (16 questions, each with a regex identifying its gold
+sentence), runs both pipelines over each, classifies the verdict, writes
+`results/failure_hunt.csv` as `hunt_df`.
+
+**Why** Gold is identified by the *authoritative sentence* rather than a remembered rule number,
+which is more robust to mislabelling. The sweep costs no API quota, so searching widely is free.
+
+**PDF** §3 — this is the documented discovery method behind Q9 and Q10.
+
+**Gotcha** Two candidates report "no gold match (regex too strict)" and one "gold never entered
+Top 10". Both stay in the table on purpose; so do the eight no-ops and the H4 rank regression
+(#5 → #10).
+
+## Cell 17 — Run-loop heading
+
+**What** Markdown only, short.
+
+**PDF** §2.
+
+## Cell 18 — Both pipelines over every query
+
+**What** The core loop. Per query: `baseline_retrieve` → `rerank` → `base_top3` / `rr_top3` →
+two `generate` calls → one row per candidate in `runs` and one summary row in `summary`. Writes
+`results/retrieval_runs.csv` and `results/query_summary.csv`; leaves `runs_df` and `summary_df`
+for cells 20, 22, 24 and 26.
+
+**Why** Outcomes are classified mechanically (`promotion`, `regression`, `no_op_identical`,
+`no_op_reordered`, `changed_context_same_verdict`) so the §4.2 table is derived from data rather
+than retyped by hand.
+
+**PDF** §2 (both pipelines end to end) and §4.2 (the rank-shift and answer evidence).
+
+**Gotchas — three assertions carry the experiment**
+1. `assert {c["chunk_id"] for c in candidates} == {c["chunk_id"] for c in reranked}` — Pipeline 2
+   re-ranks the baseline candidates and never re-retrieves.
+2. `assert _skeleton(p1, base_top3) == _skeleton(p2, rr_top3)` — masking each prompt's own
+   excerpts must reduce both to the same skeleton. This is what "identical prompt structure"
+   means operationally.
+3. `assert m1 == m2` — both answers of one query must come from the same model. This fired for
+   real on Q9 and caught a genuine defect.
+
+> *Preserved (mid-pair fail-over comment):*
+>
+> ```
+> # A model can run out of quota BETWEEN the two calls of one query — it happened here, with
+> # Answer 1 landing on gemini-3.5-flash and Answer 2 failing over to the lite model. Comparing
+> # those two would measure the model, not the retrieved context, so Answer 1 is regenerated on
+> # the surviving model. Models may still differ ACROSS queries; that is recorded per row.
+> ```
+>
+> *Preserved (prompt-skeleton comment):*
+>
+> ```
+> # The two prompts may differ ONLY in the interpolated excerpts: masking each prompt's own
+> # excerpt texts must reduce both to the same skeleton. This is what "identical prompt
+> # structure" means operationally, so it is checked rather than asserted in prose.
+> ```
+
+## Cell 19 — Rank-shift heading
+
+**What** Markdown only, short.
+
+**PDF** §4.2.
+
+## Cell 20 — Rank-shift table
+
+**What** Builds `shift` from `summary_df`, formats the `shift` column (`#8 -> #1`), writes
+`results/rank_shifts.csv`, then prints the full candidate detail for each promotion.
+
+**Why** The per-promotion print shows what the cross-encoder pushed *down* to make room, which
+is the part a bare before/after number hides.
+
+**PDF** §4.2 (document the rank changes).
+
+**Gotcha** The formatter uses `pd.notna`, not truthiness, because a missing gold rank is `NaN`
+and `bool(float("nan"))` is `True` — the naive version printed `#nan -> #nan`.
+
+## Cell 21 — Near-duplicate heading
+
+**What** Markdown only.
+
+**PDF** §3 (a document/preprocessing-specific effect).
+
+> *Preserved (original markdown):*
+>
+> ## 7. Near-duplicate candidates from chunk overlap
+>
+> Chunks overlap by one rule unit, so a rule can appear in two adjacent chunks. When both land
+> in the Top 10 they consume two of the ten candidate slots (and, if both reach the Top 3, two
+> of the three context slots) with nearly the same text. Logged rather than silently tolerated,
+> because it is a direct cost of the overlap decision.
+
+## Cell 22 — Near-duplicate log
+
+**What** For each query, compares every pair of retrieved chunks by cosine over `corpus_emb`,
+records pairs at or above `NEAR_DUP_COSINE`, writes `results/near_duplicates.csv`.
+
+**Why** Pairs that *share* rule numbers come from the deliberate chunk overlap; pairs that share
+none come from the document stating the same rule twice. The `cause` column separates them, so
+the cost of the overlap decision is attributable rather than guessed.
+
+**PDF** §3.
+
+**Gotcha** Measured: 7 pairs, all from chunk overlap. In Q7 and Q9 *both* twins were inside the
+baseline Top 3, so two of three context slots held near-identical text.
+
+## Cell 23 — Answer-comparison heading
+
+**What** Markdown only, short.
+
+**PDF** §4.2.
+
+## Cell 24 — `answers.md` writer
+
+**What** Writes `results/answers.md` — per query: the question, gold rules, rank shift, outcome,
+both Top 3 sets, the answering model, and Answer 1 / Answer 2 side by side. Then prints the
+pairs that differ.
+
+**Why** The answers live in a markdown file rather than a CSV column because they are prose
+meant to be read side by side; `query_summary.csv` deliberately drops them.
+
+**PDF** §4.2 (compare Answer 1 vs Answer 2).
+
+**Gotcha** The header reports the per-query model because the project spans two models, and
+states that both answers of any one query always come from the same one.
+
+## Cell 25 — Latency heading
+
+**What** Markdown only.
+
+**PDF** §4.3.
+
+> *Preserved (original markdown):*
+>
+> ## 9. Latency profiling
+>
+> Each stage is timed on its own, `LATENCY_REPEATS` times per query, after a discarded warm-up
+> pass — the first call loads weights and allocates buffers, and including it would swamp the
+> numbers. Hardware and device are printed with the table because these are wall-clock figures
+> from one laptop, not published benchmarks.
+
+## Cell 26 — Per-stage timing
+
+**What** Defines `time_ms`, times five stages across all queries, appends the LLM row, builds
+the `latency` DataFrame with the `hardware` column, writes `results/latency.csv`, and prints the
+`p1` / `p2` comparison used by cell 28.
+
+**Why** Stages are timed separately so the table shows *where* the cost is, not just a total.
+
+**PDF** §4.3 (record and tabulate baseline vs re-ranking runtime).
+
+**Gotchas**
+- `time_ms` discards a warm-up call; the first call loads weights and would dominate.
+- LLM timings come from uncached calls only (`t > 0`). Averaging cache hits in would divide the
+  real cost by the hit rate.
+- That row is n=3 with over 50% relative std and spans two models — an order of magnitude, not
+  a precise figure.
+
+## Cell 27 — Scaling heading
+
+**What** Markdown only, short.
+
+**PDF** §4.4.
+
+## Cell 28 — Cross-encoder throughput and extrapolation
+
+**What** Scores the entire corpus against one query to measure `pairs_per_sec`, extrapolates to
+172 / 10,000 / 1,000,000 chunks, writes `results/scaling.csv`, and prints the mechanism.
+
+**Why** The §4.4 answer is measured on this machine rather than asserted from theory: `BULK` is
+the whole corpus, which is literally the thing the section argues against doing per query.
+
+**PDF** §4.4 (why not cross-encode the entire collection).
+
+**Gotcha** The bi-encoder embeds each chunk once at index time; the cross-encoder cannot
+precompute anything because its score depends on query and chunk jointly. That is why its cost
+is O(N) per query and why the two-stage design confines the O(N) stage to N=10.
+
+## Cell 29 — Outputs index
+
+**What** Markdown only. Table of everything written to `results/`.
+
+**PDF** Packaging for §4.
+
+> *Preserved (original markdown):*
+>
+> ## 11. Outputs
+>
+> | file | contents |
+> |---|---|
+> | `results/chunks.csv` | the corpus: chunk id, section, rule numbers, pages, token count, text |
+> | `results/retrieval_runs.csv` | every candidate of every query with both ranks and both scores |
+> | `results/query_summary.csv` | one row per query: gold ranks, outcome, Top 3 sets |
+> | `results/rank_shifts.csv` | gold-chunk rank before and after re-ranking |
+> | `results/near_duplicates.csv` | overlap-induced and document-level duplicate candidates |
+> | `results/answers.md` | Answer 1 vs Answer 2, side by side |
+> | `results/answers_cache.json` | frozen generations keyed by (model, prompt hash) |
+> | `results/latency.csv` | per-stage timings, mean ± std, with hardware |
+> | `results/scaling.csv` | cross-encoder throughput and the extrapolation |
+>
+> `NOTES.md` records why each decision was made and what was observed, including the cases where
+> re-ranking changed nothing. The report is written by hand from these files.
