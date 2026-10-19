@@ -10,6 +10,9 @@ lab notebook, not report prose, and nothing here is meant to be pasted into the 
 Conventions: record the alternative that was rejected and why; every number carries hardware,
 repeat count and whether a warm-up was discarded; negative results stay in.
 
+For a cell-by-cell walkthrough of the notebook itself — what each cell does, the reasoning that
+used to live in its docstrings, and the gotchas — see [docs/CELL_GUIDE.md](docs/CELL_GUIDE.md).
+
 ---
 
 ## 1. Decisions and why

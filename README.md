@@ -18,6 +18,7 @@ Models: `sentence-transformers/all-MiniLM-L6-v2` (bi-encoder),
 |---|---|
 | `notebooks/rag_baseline_vs_reranking.ipynb` | **the deliverable** — both pipelines, failure-mode analysis, latency, scaling |
 | `NOTES.md` | every design decision with its reasoning, plus observations and surprises |
+| `docs/CELL_GUIDE.md` | cell-by-cell walkthrough of the notebook: what each cell does, why, which assignment section it serves, and the gotchas |
 | `PLAN.md` | the plan the work followed, mapped to the assignment sections |
 | `results/` | generated CSVs + `answers.md` (Answer 1 vs Answer 2) |
 | `RAG_LMA_Assignment_v1.pdf` | the assignment brief |
