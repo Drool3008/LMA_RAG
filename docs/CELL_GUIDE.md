@@ -7,7 +7,11 @@ Each entry gives: what the cell does (and which variables later cells depend on)
 built that way, which assignment section it serves, and any gotcha. Quoted blocks marked
 *preserved* are the verbatim text that was moved out of the notebook.
 
-Assignment: `../RAG_LMA_Assignment_v1.pdf`. Decisions and measured results: `../NOTES.md`.
+Assignment: `../RAG_LMA_Assignment_v1.pdf`.
+
+Some preserved blocks below point at `NOTES.md` section numbers. That is the author's working
+decision log and is deliberately not in this repo — the report has to be in the author's own
+words. Those pointers are kept as they were written; this guide stands on its own without them.
 
 | cell | type | what it is | PDF section |
 |---|---|---|---|
@@ -46,7 +50,8 @@ Assignment: `../RAG_LMA_Assignment_v1.pdf`. Decisions and measured results: `../
 
 ## Cell 0 — Title and pipeline summary
 
-**What** Markdown only. States the two pipelines and points at `results/` and `NOTES.md`.
+**What** Markdown only. States the two pipelines, points at `results/`, and carries the
+`## 0. Setup` heading for cells 1-4.
 
 **PDF** Framing for §2.
 
@@ -71,7 +76,7 @@ Assignment: `../RAG_LMA_Assignment_v1.pdf`. Decisions and measured results: `../
 **What** Every tunable in one place. Creates `ROOT`, `DATA`, `RESULTS`, `PDF_URL`, `PDF_PATH`,
 `BI_ENCODER_NAME`, `CROSS_ENCODER_NAME`, `GEN_MODEL_CANDIDATES`, `GEN_MODEL` (None until the
 smoke test in cell 4 sets it), `TOP_K_RETRIEVE=10`, `TOP_K_CONTEXT=3`, `MAX_CHUNK_TOKENS=230`,
-`TOKENIZER_HARD_CAP=256`, `OVERLAP_UNITS=1`, `LLM_CALL_BUDGET=22`, `CACHE_PATH`,
+`TOKENIZER_HARD_CAP=256`, `OVERLAP_UNITS=1`, `LLM_CALL_BUDGET=26`, `CACHE_PATH`,
 `NEAR_DUP_COSINE=0.90`, `LATENCY_REPEATS=10`. Nearly every later cell reads these.
 
 **Why** `ROOT` is resolved from the working directory so the notebook runs both from the repo
@@ -158,6 +163,11 @@ does not add variance to the §4.3 numbers.
 **Gotchas**
 - Only *successful* generations count against `LLM_CALL_BUDGET`; a rejected request is not a
   generation.
+- The smoke test is **not** fatal. If no candidate answers (quota spent, or the service is down)
+  it warns and continues, because every answer is in the committed cache and a run that needs no
+  new generation must still work. `generate` raises only when an uncached answer is really needed.
+- A model that exhausts its transient retries is added to `_exhausted` too, so later queries fail
+  fast instead of re-waiting the same backoff.
 - The duration returned by `_raw_call` covers the successful request alone, so time spent
   waiting out a rate limit cannot leak into the latency table.
 - A 429 is ambiguous and is split two ways: a per-minute rate limit is retried, while a spent
@@ -466,7 +476,7 @@ query's list, not across queries. No absolute score threshold is used anywhere f
 
 ## Cell 14 — The queries and gold resolution
 
-**What** Defines `QUERIES` (Q1–Q10, each with `qid`, `category`, `question`, `gold_rules`,
+**What** Defines `QUERIES` (Q1–Q12, each with `qid`, `category`, `question`, `gold_rules`,
 `why`), defines `gold_chunk_ids`, then resolves and asserts `gold_chunk_ids` for every query.
 Cell 18 iterates `QUERIES`.
 
@@ -482,9 +492,16 @@ their `why` fields say so.
   states some rules twice in different sections. "Gold rank" means the best-ranked member.
 - The `assert q["gold_chunk_ids"]` catches a gold rule number that matches no chunk, which would
   otherwise look like a retrieval failure.
-- Q6's gold label (46.1) turned out to be the weaker of two statements of the same rule, which
-  is why its row reads "gold never entered Top 10" while both answers are correct — see
-  `NOTES.md` 3.10.
+- Q6's gold label was originally only 46.1 (MECATOL REX), which merely *mentions* the token.
+  That scored as "gold never entered Top 10" while both answers were correct, because the
+  authoritative statement of the six-influence cost is 26.2 (CUSTODIANS TOKEN). Gold is now both
+  rules and the row reads #3 → #1. A caution worth keeping: a single-rule gold label can
+  manufacture a retrieval failure that is really a labelling error.
+- Q8 was relabelled from `buried_vital_chunk` to `exception_corner`: its gold sat at #2 before
+  and after, so it demonstrates an exception clause, not a buried chunk. The buried-chunk
+  phenomenon is a rank property, shown by the promotions (Q4, Q9, Q10, Q12).
+- Q11 and Q12 were added after auditing the first ten. Q11 is the keyword trap; Q12 is an
+  exceptions/corner case that the cross-encoder actually repairs (#4 → #2).
 
 > *Preserved (`gold_chunk_ids` docstring):*
 >
@@ -514,18 +531,23 @@ their `why` fields say so.
 
 ## Cell 16 — The retrieval-only failure hunt
 
-**What** Defines `HUNT_CANDIDATES` (16 questions, each with a regex identifying its gold
+**What** Defines `HUNT_CANDIDATES` (36 questions, each with a regex identifying its gold
 sentence), runs both pipelines over each, classifies the verdict, writes
-`results/failure_hunt.csv` as `hunt_df`.
+`results/failure_hunt.csv` as `hunt_df`, and prints promotions by category plus a dedicated
+keyword-trap table.
+
+The second sweep (the `K`/`L` ids) targets keyword traps specifically: each question is phrased
+in the vocabulary of a section that does **not** hold the answer. Q11 and Q12 came from here.
 
 **Why** Gold is identified by the *authoritative sentence* rather than a remembered rule number,
 which is more robust to mislabelling. The sweep costs no API quota, so searching widely is free.
 
 **PDF** §3 — this is the documented discovery method behind Q9 and Q10.
 
-**Gotcha** Two candidates report "no gold match (regex too strict)" and one "gold never entered
-Top 10". Both stay in the table on purpose; so do the eight no-ops and the H4 rank regression
-(#5 → #10).
+**Gotcha** The failures stay in the table on purpose: candidates whose regex matched nothing,
+candidates whose gold never entered the Top 10, the no-ops, and the rank regressions (H4 #5 → #10,
+L4 #1 → #4). The headline result is the keyword-trap row count: **17 keyword traps screened, 0
+promotions**.
 
 ## Cell 17 — Run-loop heading
 
@@ -554,6 +576,14 @@ than retyped by hand.
    means operationally.
 3. `assert m1 == m2` — both answers of one query must come from the same model. This fired for
    real on Q9 and caught a genuine defect.
+
+When the two answers disagree on model, the pair is re-aligned on whichever model already has
+**both** answers cached, and regenerated only if neither does. Without that, a stale entry left
+by an aborted run can win the lookup for one half of a pair and deadlock the assertion.
+
+If no model is available and a pair is not cached, the answers are recorded as pending
+(`answers_generated = False`) and the retrieval evidence for that query is still produced. That
+is why Q11 and Q12 currently have rank data but no Answer 1 / Answer 2.
 
 > *Preserved (mid-pair fail-over comment):*
 >
@@ -590,6 +620,11 @@ is the part a bare before/after number hides.
 
 **Gotcha** The formatter uses `pd.notna`, not truthiness, because a missing gold rank is `NaN`
 and `bool(float("nan"))` is `True` — the naive version printed `#nan -> #nan`.
+
+The table also carries `best_gold_chunk`, because the brief's example phrasing is "Chunk X moved
+from #8 → #1" and a rule number alone does not identify a chunk. A separate line prints which
+queries were buried at 4-10 and then promoted into the Top 3 — the one category that is a rank
+property rather than a question type.
 
 ## Cell 21 — Near-duplicate heading
 
@@ -667,10 +702,12 @@ the `latency` DataFrame with the `hardware` column, writes `results/latency.csv`
 
 **Gotchas**
 - `time_ms` discards a warm-up call; the first call loads weights and would dominate.
-- LLM timings come from uncached calls only (`t > 0`). Averaging cache hits in would divide the
-  real cost by the hit rate.
-- That row is n=3 with over 50% relative std and spans two models — an order of magnitude, not
-  a precise figure.
+- LLM timings are read from the answer cache, where every entry stored the duration of the real
+  request that produced it. That covers all generations rather than only the few that missed the
+  cache on a given run — an earlier version read `t > 0` from the current run and dropped the row
+  entirely once every answer was cached.
+- The row still spans more than one model and has high variance; the `note` column in
+  `latency.csv` carries that caveat alongside the data.
 
 ## Cell 27 — Scaling heading
 
