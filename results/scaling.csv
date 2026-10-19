@@ -1,4 +1,4 @@
 corpus_chunks,cross_encode_entire_corpus_s,baseline_retrieval_s,rerank_top10_s,ce_all_vs_rerank_top10_x,pairs_per_sec,hardware
-172,2.55,0.01576,0.16267,15.7,67.5,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
-10000,148.05,0.01576,0.16267,910.1,67.5,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
-1000000,14804.63,0.01576,0.16267,91010.2,67.5,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
+172,3.09,0.01677,0.18033,17.2,55.6,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
+10000,179.94,0.01677,0.18033,997.8,55.6,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
+1000000,17993.98,0.01677,0.18033,99783.6,55.6,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps

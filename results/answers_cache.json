@@ -138,5 +138,33 @@
     "answer": "Your factory (a unit with \"Production\") cannot produce ships if it is blockaded (Rule 14.1). A unit is blockaded if it is in a system that contains other players' ships but does not contain any of your own ships (Rule 14.0).",
     "n_context_chunks": 3,
     "seconds": 13.143
+  },
+  "f5587e5d1b11191c3c87301c29e4e11cf6f1760c0cee8646aba7fbe14104a4b3": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "f5587e5d1b11191c3c87301c29e4e11cf6f1760c0cee8646aba7fbe14104a4b3",
+    "answer": "The provided rules do not cover this.",
+    "n_context_chunks": 3,
+    "seconds": 2.377
+  },
+  "dfc39d091b4525205f82ad24403764c4dbed2fe5f5a0aa816082750d16566cd2": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "dfc39d091b4525205f82ad24403764c4dbed2fe5f5a0aa816082750d16566cd2",
+    "answer": "The provided rules do not cover this.",
+    "n_context_chunks": 3,
+    "seconds": 5.801
+  },
+  "7581091d1d1c80812a1125ee708e6d2dd86c0cf2da62b20fcb87932e9b61210b": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "7581091d1d1c80812a1125ee708e6d2dd86c0cf2da62b20fcb87932e9b61210b",
+    "answer": "No, you cannot capture the planet. According to rule 44.5, a player gains control of a planet only if they committed ground forces to it and those units remain there after any potential combat. Because you have no ground forces on the planet, you do not meet the criteria to gain control under the Establish Control step (44.5).",
+    "n_context_chunks": 3,
+    "seconds": 1.739
+  },
+  "59a6c96c5642a87c0a7d8c0072e05d49b76387627ad83d8622503e7fe42f4448": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "59a6c96c5642a87c0a7d8c0072e05d49b76387627ad83d8622503e7fe42f4448",
+    "answer": "The provided rules do not cover this.",
+    "n_context_chunks": 3,
+    "seconds": 1.734
   }
 }

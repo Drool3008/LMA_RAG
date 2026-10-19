@@ -1,7 +1,7 @@
 stage,n,mean_ms,std_ms,median_ms,min_ms,max_ms,hardware,note
-1. query embedding (bi-encoder),120,15.75,0.54,15.67,14.73,18.1,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+1. query embedding (bi-encoder),120,16.76,1.79,16.07,15.03,23.9,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
 2. FAISS search (top 10 of N),120,0.01,0.0,0.01,0.01,0.03,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
-3. cross-encoder scoring (10 pairs),120,152.13,24.43,147.28,108.95,277.91,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
-Pipeline 1 retrieval total (1+2),120,16.56,1.96,15.87,14.79,25.72,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
-Pipeline 2 retrieval total (1+2+3),120,162.67,20.84,159.73,125.75,302.06,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+3. cross-encoder scoring (10 pairs),120,163.77,29.09,157.7,116.07,328.25,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+Pipeline 1 retrieval total (1+2),120,17.65,7.88,16.21,15.27,99.67,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+Pipeline 2 retrieval total (1+2+3),120,180.33,27.84,174.92,134.61,326.27,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
 "LLM generation (per real request, from cache)",20,5906.15,4471.84,4337.5,1494.0,16435.0,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,"durations of the 20 real generations, spanning 2 model(s); high variance, order of magnitude only"
