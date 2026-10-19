@@ -1,7 +1,7 @@
-stage,n,mean_ms,std_ms,median_ms,min_ms,max_ms,hardware
-1. query embedding (bi-encoder),100,15.71,0.96,15.5,14.61,20.58,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
-2. FAISS search (top 10 of N),100,0.02,0.01,0.01,0.01,0.06,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
-3. cross-encoder scoring (10 pairs),100,151.54,20.66,147.04,107.73,244.19,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
-Pipeline 1 retrieval total (1+2),100,16.11,1.3,15.71,14.81,21.71,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
-Pipeline 2 retrieval total (1+2+3),100,169.72,23.62,161.78,125.95,252.65,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
-LLM generation (uncached calls only),3,8603.36,4550.87,8625.25,4041.58,13143.24,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps
+stage,n,mean_ms,std_ms,median_ms,min_ms,max_ms,hardware,note
+1. query embedding (bi-encoder),120,15.75,0.54,15.67,14.73,18.1,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+2. FAISS search (top 10 of N),120,0.01,0.0,0.01,0.01,0.03,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+3. cross-encoder scoring (10 pairs),120,152.13,24.43,147.28,108.95,277.91,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+Pipeline 1 retrieval total (1+2),120,16.56,1.96,15.87,14.79,25.72,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+Pipeline 2 retrieval total (1+2+3),120,162.67,20.84,159.73,125.75,302.06,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,
+"LLM generation (per real request, from cache)",20,5906.15,4471.84,4337.5,1494.0,16435.0,arm64 / Darwin 25.4.0 / torch 2.5.1 / device=mps,"durations of the 20 real generations, spanning 2 model(s); high variance, order of magnitude only"

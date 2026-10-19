@@ -1,6 +1,6 @@
 # Answer 1 (baseline) vs Answer 2 (re-ranked)
 
-Models: `gemini-3.5-flash` (8), `gemini-3.1-flash-lite` (2) · temperature: provider default (see NOTES.md 1.2) · thinking: minimal · identical prompt template for both answers. Both answers of any one query always come from the same model (asserted in §5).
+Models: `gemini-3.5-flash` (8), `gemini-3.1-flash-lite` (2), `unavailable` (2) · temperature: provider default · thinking: minimal · identical prompt template for both answers. Both answers of any one query always come from the same model (asserted in §5).
 
 ## Q1 — keyword_trap
 
@@ -112,7 +112,7 @@ Based on the provided rules, each planet can have a maximum of two PDS units.
 
 **Q:** Who may remove the token blocking the galaxy's central planet, and what does it cost?
 
-*Model:* `gemini-3.5-flash` · *gold rules:* `46.1` · *gold rank:* `#nan` → `#nan` · *outcome:* `changed_context_same_verdict` · *answers identical:* `False`
+*Model:* `gemini-3.5-flash` · *gold rules:* `46.1;26.2` · *gold rank:* `#3.0` → `#1.0` · *outcome:* `changed_context_same_verdict` · *answers identical:* `False`
 
 *Baseline Top 3 (chunk ids):* `34;47;49` · *Re-ranked Top 3:* `49;47;152`
 
@@ -152,7 +152,7 @@ A player is forbidden from passing their turn until they have performed a strate
 
 ---
 
-## Q8 — buried_vital_chunk
+## Q8 — exception_corner
 
 **Q:** If a unit takes damage, does it fight less effectively?
 
@@ -207,5 +207,41 @@ You are limited by the number of units in your reinforcements (58.5). Additional
 **Answer 2**
 
 Your factory (a unit with "Production") cannot produce ships if it is blockaded (Rule 14.1). A unit is blockaded if it is in a system that contains other players' ships but does not contain any of your own ships (Rule 14.0).
+
+---
+
+## Q11 — keyword_trap
+
+**Q:** Do I still get the secondary ability of other players' strategy cards after I have passed?
+
+*Model:* `unavailable` · *gold rules:* `3.3` · *gold rank:* `#nan` → `#nan` · *outcome:* `changed_context_same_verdict` · *answers identical:* `False`
+
+*Baseline Top 3 (chunk ids):* `136;135;134` · *Re-ranked Top 3:* `134;36;157`
+
+**Answer 1**
+
+(not generated: no model available and this prompt is not cached)
+
+**Answer 2**
+
+(not generated: no model available and this prompt is not cached)
+
+---
+
+## Q12 — exception_corner
+
+**Q:** I won the space battle but brought no troops along. Can I capture the planet?
+
+*Model:* `unavailable` · *gold rules:* `44.2` · *gold rank:* `#4.0` → `#2.0` · *outcome:* `promotion` · *answers identical:* `False`
+
+*Baseline Top 3 (chunk ids):* `77;126;47` · *Re-ranked Top 3:* `76;75;94`
+
+**Answer 1**
+
+(not generated: no model available and this prompt is not cached)
+
+**Answer 2**
+
+(not generated: no model available and this prompt is not cached)
 
 ---

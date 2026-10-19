@@ -15,3 +15,23 @@ H13,synonym_gap,Do wrecked vessels go back into my reserves?,1,53,,,gold never e
 H14,keyword_trap,How do I take over a world that already belongs to a rival?,14,28;47;49;65;74;75;76;77;116;118;121;145;146;162,1.0,1.0,no change in Top 3 membership,False
 H15,exception_corner,Can the central world be invaded before anyone pays the toll?,6,15;49;50;63;79;133,8.0,2.0,promotion,False
 H16,negation_constraint,Am I allowed to activate a system twice in the same turn?,1,11,1.0,1.0,no change in Top 3 membership,False
+K1,keyword_trap,Do I still get the secondary ability of other players' strategy cards after I have passed?,2,8;9,,,gold never entered Top 10,False
+K2,keyword_trap,What happens to my strategy card once I have used its main ability?,1,111,,,gold never entered Top 10,False
+K3,exception_corner,I won the space battle but brought no troops along. Can I capture the planet?,2,74;75,4.0,2.0,promotion,False
+K4,keyword_trap,Is a planet still mine if I have no units sitting on it?,2,46;47,2.0,1.0,no change in Top 3 membership,False
+K5,keyword_trap,Does a wormhole make two systems count as neighbours?,1,12,1.0,3.0,no change in Top 3 membership,False
+K6,keyword_trap,How far is a ship allowed to travel in a single move?,1,81,8.0,9.0,no change in Top 3 membership,False
+K8,negation_constraint,Can I play two copies of the same action card at the same moment?,1,7,1.0,1.0,no change in Top 3 membership,False
+K13,keyword_trap,Can my planetary defence guns fire through a wormhole?,1,171,1.0,1.0,no change in Top 3 membership,False
+K19,negation_constraint,Can I move ships out of a system that already has my own command token in it?,2,83;84,1.0,1.0,no change in Top 3 membership,False
+K22,keyword_trap,Which step of the round do I draw a new action card in?,3,6;131;132,1.0,1.0,no change in Top 3 membership,False
+K23,keyword_trap,How do I get more command tokens during the game?,1,72,,,gold never entered Top 10,False
+K24,keyword_trap,Do fighters count against the number of ships I can keep in a system?,1,61,3.0,2.0,no change in Top 3 membership,False
+K26,keyword_trap,What protects a planet from being shelled from space?,4,4;5;30;98,2.0,1.0,no change in Top 3 membership,False
+L2,keyword_trap,Can an enemy gun platform shoot my fleet while it is flying past?,3,85;116;121,1.0,2.0,no change in Top 3 membership,False
+L3,exception_corner,What do I do if I want to build a unit but have none left in reserve?,1,105,1.0,4.0,regression,False
+L4,keyword_trap,When exactly do I claim victory points for finishing an objective?,3,88;89;131,1.0,4.0,regression,False
+L5,keyword_trap,Does my shipyard let me place new units on any planet in the system?,1,104,,,gold never entered Top 10,False
+L9,keyword_trap,Does my carrier lose its cargo if it gets blown up in a fight?,1,53,,,gold never entered Top 10,False
+L10,exception_corner,Can I keep attacking after my opponent runs out of ships?,7,3;8;67;122;123;127;128,1.0,4.0,regression,False
+L13,role_limit,Is there a cap on how many units I can have in total?,2,41;42,,,gold never entered Top 10,False

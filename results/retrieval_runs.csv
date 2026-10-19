@@ -49,7 +49,7 @@ Q5,role_limit,46,24.0;24.1;24.2;24.3;24.4,CONTROL,12,10,0.3763,7,-5.5154,False,F
 Q5,role_limit,31,16.0;16.1;16.2;16.3;16.4,CAPACITY (ATTRIBUTE),10,6,0.4162,8,-5.8123,False,False,False
 Q5,role_limit,143,77.0;77.1;77.2;77.3;77.4;77.5;77.6,SYSTEM TILES,27,4,0.4267,9,-7.0998,False,False,False
 Q5,role_limit,54,30.0;30.1;30.2,DIPLOMACY (STRATEGY CARD),14,7,0.4129,10,-7.9966,False,False,False
-Q6,exception_corner,49,26.0;26.1;26.2;26.3,CUSTODIANS TOKEN,13,3,0.4096,1,-2.0717,False,True,True
+Q6,exception_corner,49,26.0;26.1;26.2;26.3,CUSTODIANS TOKEN,13,3,0.4096,1,-2.0717,True,True,True
 Q6,exception_corner,47,24.4;24.5;24.6;24.7,CONTROL,13,2,0.413,2,-4.9457,False,True,True
 Q6,exception_corner,152,79.15;79.16;79.17;79.18;79.19,TECHNOLOGY,28,5,0.3571,3,-7.4524,False,False,True
 Q6,exception_corner,46,24.0;24.1;24.2;24.3;24.4,CONTROL,12,6,0.3519,4,-9.51,False,False,False
@@ -69,16 +69,16 @@ Q7,negation_constraint,52,28.0,DEFENDER,13,10,0.3392,7,-6.5898,False,False,False
 Q7,negation_constraint,94,53.0;53.1,OPPONENT,20,6,0.3745,8,-7.5249,False,False,False
 Q7,negation_constraint,137,73.0;73.1,STRATEGY PHASE,26,9,0.3404,9,-9.2549,False,False,False
 Q7,negation_constraint,161,83.4;83.5;83.6,TRANSACTIONS,30,8,0.3528,10,-9.4773,False,False,False
-Q8,buried_vital_chunk,142,76.3;76.4;76.5;76.6,SUSTAIN DAMAGE (UNIT ABILITY),27,3,0.4977,1,-1.3978,False,True,True
-Q8,buried_vital_chunk,141,76.0;76.1;76.2;76.3,SUSTAIN DAMAGE (UNIT ABILITY),27,2,0.5034,2,-1.9014,True,True,True
-Q8,buried_vital_chunk,23,10.2,ANTI-FIGHTER BARRAGE (UNIT ABILITY),9,7,0.3967,3,-4.7407,False,False,True
-Q8,buried_vital_chunk,21,10.0,ANTI-FIGHTER BARRAGE (UNIT ABILITY),9,10,0.3587,4,-5.7279,False,False,False
-Q8,buried_vital_chunk,32,17.0;17.1;17.2,COMBAT (ATTRIBUTE),10,5,0.4193,5,-5.9847,False,False,False
-Q8,buried_vital_chunk,53,29.0;29.1;29.2,DESTROYED,14,1,0.5054,6,-6.27,False,True,False
-Q8,buried_vital_chunk,28,15.0,BOMBARDMENT (UNIT ABILITY),10,6,0.3998,7,-6.5911,False,False,False
-Q8,buried_vital_chunk,30,15.1;15.2,BOMBARDMENT (UNIT ABILITY),10,4,0.4427,8,-7.9395,False,False,False
-Q8,buried_vital_chunk,98,56.0;56.1;56.2;56.3,PLANETARY SHIELD (UNIT ABILITY),20,8,0.3756,9,-8.2984,False,False,False
-Q8,buried_vital_chunk,29,15.1,BOMBARDMENT (UNIT ABILITY),10,9,0.3732,10,-9.9883,False,False,False
+Q8,exception_corner,142,76.3;76.4;76.5;76.6,SUSTAIN DAMAGE (UNIT ABILITY),27,3,0.4977,1,-1.3978,False,True,True
+Q8,exception_corner,141,76.0;76.1;76.2;76.3,SUSTAIN DAMAGE (UNIT ABILITY),27,2,0.5034,2,-1.9014,True,True,True
+Q8,exception_corner,23,10.2,ANTI-FIGHTER BARRAGE (UNIT ABILITY),9,7,0.3967,3,-4.7407,False,False,True
+Q8,exception_corner,21,10.0,ANTI-FIGHTER BARRAGE (UNIT ABILITY),9,10,0.3587,4,-5.7279,False,False,False
+Q8,exception_corner,32,17.0;17.1;17.2,COMBAT (ATTRIBUTE),10,5,0.4193,5,-5.9847,False,False,False
+Q8,exception_corner,53,29.0;29.1;29.2,DESTROYED,14,1,0.5054,6,-6.27,False,True,False
+Q8,exception_corner,28,15.0,BOMBARDMENT (UNIT ABILITY),10,6,0.3998,7,-6.5911,False,False,False
+Q8,exception_corner,30,15.1;15.2,BOMBARDMENT (UNIT ABILITY),10,4,0.4427,8,-7.9395,False,False,False
+Q8,exception_corner,98,56.0;56.1;56.2;56.3,PLANETARY SHIELD (UNIT ABILITY),20,8,0.3756,9,-8.2984,False,False,False
+Q8,exception_corner,29,15.1,BOMBARDMENT (UNIT ABILITY),10,9,0.3732,10,-9.9883,False,False,False
 Q9,role_limit,160,83.0;83.1;83.2;83.3;83.4,TRANSACTIONS,30,8,0.3039,1,-0.3348,True,False,True
 Q9,role_limit,9,3.3;3.4;3.5,ACTION PHASE,7,1,0.3637,2,-2.7364,False,True,True
 Q9,role_limit,159,82.5;82.6;82.7,TRADE GOODS,29,6,0.315,3,-2.8576,False,False,True
@@ -99,3 +99,23 @@ Q10,negation_constraint,118,66.3;66.4;66.5;66.6,SPACE CANNON (UNIT ABILITY),23,1
 Q10,negation_constraint,61,34.0;34.1;34.2;34.3;34.4,FLEET POOL,15,3,0.3651,8,-11.1578,False,True,False
 Q10,negation_constraint,105,58.4;58.5;58.6,PRODUCING UNITS,21,2,0.3735,9,-11.1745,False,True,False
 Q10,negation_constraint,107,59.1;59.2,PRODUCTION (UNIT ABILITY),21,6,0.3557,10,-11.2608,False,False,False
+Q11,keyword_trap,134,71.0;71.1;71.2;71.3,STRATEGIC ACTION,26,3,0.5448,1,6.8966,False,True,True
+Q11,keyword_trap,36,19.5;19.6,COMMAND TOKENS,11,5,0.4414,2,5.2167,False,False,True
+Q11,keyword_trap,157,81.3;81.4;81.5,TRADE (STRATEGY CARD),29,4,0.4988,3,5.0651,False,False,True
+Q11,keyword_trap,136,72.7;72.8,STRATEGY CARD,26,1,0.6292,4,4.1282,False,True,False
+Q11,keyword_trap,135,72.0;72.1;72.2;72.3;72.4;72.5;72.6;72.7,STRATEGY CARD,26,2,0.5657,5,3.7521,False,True,False
+Q11,keyword_trap,78,45.0;45.1;45.2;45.3;45.4,LEADERSHIP (STRATEGY CARD),17,10,0.3961,6,1.3436,False,False,False
+Q11,keyword_trap,169,88.0;88.1;88.2,WARFARE (STRATEGY CARD),31,7,0.4217,7,-0.075,False,False,False
+Q11,keyword_trap,138,73.1;73.2,STRATEGY PHASE,26,8,0.4186,8,-0.3054,False,False,False
+Q11,keyword_trap,137,73.0;73.1,STRATEGY PHASE,26,6,0.4289,9,-0.6653,False,False,False
+Q11,keyword_trap,57,31.5;31.6;31.7;31.8;31.9,ELIMINATION,14,9,0.4013,10,-0.9714,False,False,False
+Q12,exception_corner,76,44.3;44.4,INVASION,17,9,0.3173,1,-4.9529,False,False,True
+Q12,exception_corner,75,44.2;44.3,INVASION,17,7,0.3269,2,-5.1474,True,False,True
+Q12,exception_corner,94,53.0;53.1,OPPONENT,20,10,0.304,3,-5.5764,False,False,True
+Q12,exception_corner,74,44.0;44.1;44.2,INVASION,17,4,0.342,4,-5.7716,True,False,False
+Q12,exception_corner,77,44.4;44.5,INVASION,17,1,0.3754,5,-7.1544,False,True,False
+Q12,exception_corner,128,67.9;67.10,SPACE COMBAT,24,6,0.3372,6,-7.1629,False,False,False
+Q12,exception_corner,126,67.7,SPACE COMBAT,24,2,0.364,7,-7.1978,False,True,False
+Q12,exception_corner,47,24.4;24.5;24.6;24.7,CONTROL,13,3,0.3543,8,-8.2234,False,True,False
+Q12,exception_corner,123,67.3;67.4,SPACE COMBAT,24,5,0.3381,9,-8.7958,False,False,False
+Q12,exception_corner,127,67.7;67.8;67.9,SPACE COMBAT,24,8,0.3218,10,-9.5773,False,False,False
