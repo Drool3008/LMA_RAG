@@ -1,0 +1,17 @@
+hid,category,question,n_gold_chunks,gold_chunks,gold_rank_baseline,gold_rank_rerank,verdict,promoted_to_queryset
+H1,transport,"If a ship carrying troops is destroyed, what happens to the troops?",0,,,,no gold match (regex too strict),False
+H2,keyword_trap,Can I strike a bargain with a player sitting on the far side of the galaxy?,1,51,3.0,3.0,no change in Top 3 membership,False
+H3,role_limit,How many swaps am I allowed with the player beside me during one turn?,1,160,8.0,1.0,promotion,True
+H4,role_limit,Is there a cap on how many victory conditions I can claim in a single round?,1,89,5.0,10.0,no change in Top 3 membership,False
+H5,negation_constraint,Can my foot soldiers walk from one world to another by themselves?,1,68,4.0,3.0,promotion,False
+H6,exception_corner,What do I have to roll to keep my vessel from being sucked into the rift?,0,,,,no gold match (regex too strict),False
+H7,exception_corner,At what point is someone knocked out of the game for good?,1,56,6.0,2.0,promotion,False
+H8,exception_corner,Can I pull my fleet out of a battle once shooting has started?,3,123;126;127,1.0,1.0,no change in Top 3 membership,False
+H9,keyword_trap,What limits the number of warships I can keep in one system?,6,33;34;61;90;115;132,1.0,1.0,no change in Top 3 membership,False
+H10,negation_constraint,What stops my factory from turning out new warships?,1,27,7.0,1.0,promotion,True
+H11,exception_corner,"If two abilities go off at the same instant, which one resolves first?",1,3,1.0,1.0,no change in Top 3 membership,False
+H12,negation_constraint,May I hand over a promissory note I already gave away once?,1,110,1.0,1.0,no change in Top 3 membership,False
+H13,synonym_gap,Do wrecked vessels go back into my reserves?,1,53,,,gold never entered Top 10,False
+H14,keyword_trap,How do I take over a world that already belongs to a rival?,14,28;47;49;65;74;75;76;77;116;118;121;145;146;162,1.0,1.0,no change in Top 3 membership,False
+H15,exception_corner,Can the central world be invaded before anyone pays the toll?,6,15;49;50;63;79;133,8.0,2.0,promotion,False
+H16,negation_constraint,Am I allowed to activate a system twice in the same turn?,1,11,1.0,1.0,no change in Top 3 membership,False

@@ -1,0 +1,11 @@
+qid,category,question,gold_rules,gold_rank_baseline,gold_rank_rerank,gold_in_top3_baseline,gold_in_top3_rerank,outcome,baseline_top3,rerank_top3,answer_model,answers_identical,a1_cache_hit,a2_cache_hit,a1_seconds,a2_seconds
+Q1,keyword_trap,How many cards is a player allowed to keep in their hand between rounds?,2.4,1.0,1.0,True,True,changed_context_same_verdict,6;137;91,6;57;70,gemini-3.5-flash,False,True,True,0.0,0.0
+Q2,synonym_gap,Can a warship fly into a star that has exploded?,75.0;75.1,1.0,1.0,True,True,changed_context_same_verdict,140;115;145,140;24;115,gemini-3.5-flash,False,True,True,0.0,0.0
+Q3,exception_corner,May a player build new warships at a shipyard while an enemy fleet sits in the same system?,58.6;14.0;14.1,4.0,6.0,False,False,changed_context_same_verdict,115;129;45,115;61;84,gemini-3.5-flash,True,True,True,0.0,0.0
+Q4,negation_constraint,Can I take a tactical action on a system I have already claimed this round?,5.2,6.0,1.0,False,True,promotion,146;144;145,11;121;144,gemini-3.5-flash,False,True,True,0.0,0.0
+Q5,role_limit,How many planetary defence systems can one player have on the same world?,54.3;74.5,1.0,1.0,True,True,changed_context_same_verdict,95;77;55,95;44;77,gemini-3.5-flash,False,True,True,0.0,0.0
+Q6,exception_corner,"Who may remove the token blocking the galaxy's central planet, and what does it cost?",46.1,,,False,False,changed_context_same_verdict,34;47;49,49;47;152,gemini-3.5-flash,False,True,True,0.0,0.0
+Q7,negation_constraint,When is a player forbidden from passing their turn?,3.2;3.4,1.0,1.0,True,True,no_op_identical,9;8;10,9;8;10,gemini-3.5-flash,True,True,True,0.0,0.0
+Q8,buried_vital_chunk,"If a unit takes damage, does it fight less effectively?",76.2,2.0,2.0,True,True,changed_context_same_verdict,53;141;142,142;141;23,gemini-3.5-flash,False,True,True,0.0,0.0
+Q9,role_limit,How many swaps am I allowed with the player beside me during one turn?,83.1,8.0,1.0,False,True,promotion,9;8;137,160;9;159,gemini-3.1-flash-lite,False,False,True,4.041581124998629,0.0
+Q10,negation_constraint,What stops my factory from turning out new warships?,14.0;14.1,7.0,1.0,False,True,promotion,115;105;61,27;83;84,gemini-3.1-flash-lite,False,False,False,8.625253500067629,13.143235666910186

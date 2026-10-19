@@ -1,0 +1,101 @@
+qid,category,chunk_id,rule_nos,section_title,page_from,bi_rank,bi_score,ce_rank,ce_score,is_gold,in_baseline_top3,in_rerank_top3
+Q1,keyword_trap,6,2.0;2.1;2.2;2.3;2.4;2.5,ACTION CARDS,7,1,0.4899,1,1.5742,True,True,True
+Q1,keyword_trap,57,31.5;31.6;31.7;31.8;31.9,ELIMINATION,14,5,0.3789,2,-3.0788,False,False,True
+Q1,keyword_trap,70,40.3;40.4,IMPERIAL (STRATEGY CARD),16,9,0.3477,3,-3.3358,False,False,True
+Q1,keyword_trap,137,73.0;73.1,STRATEGY PHASE,26,2,0.4026,4,-4.3797,False,True,False
+Q1,keyword_trap,138,73.1;73.2,STRATEGY PHASE,26,6,0.3526,5,-6.7768,False,False,False
+Q1,keyword_trap,91,52.12;52.13;52.14;52.15,OBJECTIVE CARDS,19,3,0.3938,6,-6.963,False,True,False
+Q1,keyword_trap,168,87.6;87.7;87.8,VICTORY POINTS,31,4,0.3841,7,-7.3153,False,False,False
+Q1,keyword_trap,101,57.2;57.3,POLITICS (STRATEGY CARD),21,10,0.3444,8,-7.4581,False,False,False
+Q1,keyword_trap,42,22.4;22.5,COMPONENT LIMITATIONS,12,8,0.348,9,-7.6548,False,False,False
+Q1,keyword_trap,89,52.5;52.6;52.7;52.8,OBJECTIVE CARDS,19,7,0.3495,10,-7.7408,False,False,False
+Q2,synonym_gap,140,75.0;75.1,SUPERNOVA,27,1,0.3788,1,-9.9453,True,True,True
+Q2,synonym_gap,24,11.0;11.1,ASTEROID FIELD,10,5,0.2902,2,-10.5943,False,False,True
+Q2,synonym_gap,115,65.0;65.1;65.2;65.3,SHIPS,23,2,0.3172,3,-10.8409,False,True,True
+Q2,synonym_gap,84,49.4;49.5;49.6,MOVEMENT,18,6,0.2861,4,-11.0806,False,False,False
+Q2,synonym_gap,145,78.2;78.3;78.4,TACTICAL ACTION,27,3,0.302,5,-11.1661,False,True,False
+Q2,synonym_gap,162,84.0;84.1;84.2;84.3;84.4,TRANSPORT,30,4,0.2945,6,-11.2273,False,False,False
+Q2,synonym_gap,144,78.0;78.1;78.2,TACTICAL ACTION,27,9,0.2682,7,-11.2388,False,False,False
+Q2,synonym_gap,118,66.3;66.4;66.5;66.6,SPACE CANNON (UNIT ABILITY),23,8,0.2827,8,-11.2592,False,False,False
+Q2,synonym_gap,85,49.6;49.7;49.8;49.9,MOVEMENT,18,7,0.2851,9,-11.3164,False,False,False
+Q2,synonym_gap,120,66.8,SPACE CANNON (UNIT ABILITY),23,10,0.2667,10,-11.3958,False,False,False
+Q3,exception_corner,115,65.0;65.1;65.2;65.3,SHIPS,23,1,0.5145,1,-3.4655,False,True,True
+Q3,exception_corner,61,34.0;34.1;34.2;34.3;34.4,FLEET POOL,15,5,0.3963,2,-3.7398,False,False,True
+Q3,exception_corner,84,49.4;49.5;49.6,MOVEMENT,18,9,0.3885,3,-3.9778,False,False,True
+Q3,exception_corner,44,23.2;23.3,CONSTRUCTION (STRATEGY CARD),12,8,0.3915,4,-4.5455,False,False,False
+Q3,exception_corner,108,59.2;59.3;59.4,PRODUCTION (UNIT ABILITY),21,10,0.3803,5,-4.8255,False,False,False
+Q3,exception_corner,105,58.4;58.5;58.6,PRODUCING UNITS,21,4,0.4133,6,-5.4869,True,False,False
+Q3,exception_corner,45,23.3;23.4,CONSTRUCTION (STRATEGY CARD),12,3,0.4225,7,-6.4449,False,True,False
+Q3,exception_corner,107,59.1;59.2,PRODUCTION (UNIT ABILITY),21,7,0.3918,8,-6.697,False,False,False
+Q3,exception_corner,43,23.0;23.1;23.2,CONSTRUCTION (STRATEGY CARD),12,6,0.3918,9,-7.1061,False,False,False
+Q3,exception_corner,129,68.0;68.1;68.2;68.3;68.4,SPACE DOCK,25,2,0.4347,10,-7.595,False,True,False
+Q4,negation_constraint,11,5.0;5.1;5.2;5.3;5.4,ACTIVE SYSTEM,7,6,0.4055,1,-1.0674,True,False,True
+Q4,negation_constraint,121,67.0;67.1;67.2,SPACE COMBAT,23,8,0.3788,2,-1.5512,False,False,True
+Q4,negation_constraint,144,78.0;78.1;78.2,TACTICAL ACTION,27,2,0.4672,3,-1.7635,False,True,True
+Q4,negation_constraint,145,78.2;78.3;78.4,TACTICAL ACTION,27,3,0.4146,4,-3.0443,False,True,False
+Q4,negation_constraint,146,78.4;78.5,TACTICAL ACTION,27,1,0.4817,5,-3.8853,False,True,False
+Q4,negation_constraint,82,49.0;49.2;49.3,MOVEMENT,18,7,0.3834,6,-5.7499,False,False,False
+Q4,negation_constraint,8,3.0;3.1;3.2;3.3,ACTION PHASE,7,5,0.4118,7,-6.0729,False,False,False
+Q4,negation_constraint,134,71.0;71.1;71.2;71.3,STRATEGIC ACTION,26,4,0.413,8,-6.2403,False,False,False
+Q4,negation_constraint,131,70.0;70.1;70.2;70.3,STATUS PHASE,25,9,0.3649,9,-10.0144,False,False,False
+Q4,negation_constraint,170,88.2;88.3,WARFARE (STRATEGY CARD),31,10,0.364,10,-11.1542,False,False,False
+Q5,role_limit,95,54.0;54.1;54.2;54.3;54.4,PDS,20,1,0.5141,1,2.8107,True,True,True
+Q5,role_limit,44,23.2;23.3,CONSTRUCTION (STRATEGY CARD),12,9,0.3814,2,-1.187,False,False,True
+Q5,role_limit,77,44.4;44.5,INVASION,17,2,0.4458,3,-2.4952,False,True,True
+Q5,role_limit,98,56.0;56.1;56.2;56.3,PLANETARY SHIELD (UNIT ABILITY),20,8,0.4116,4,-2.6896,False,False,False
+Q5,role_limit,68,39.0;39.1;39.2;39.3,GROUND FORCES,16,5,0.4178,5,-3.7241,False,False,False
+Q5,role_limit,55,30.2;30.3,DIPLOMACY (STRATEGY CARD),14,3,0.4397,6,-5.0276,False,True,False
+Q5,role_limit,46,24.0;24.1;24.2;24.3;24.4,CONTROL,12,10,0.3763,7,-5.5154,False,False,False
+Q5,role_limit,31,16.0;16.1;16.2;16.3;16.4,CAPACITY (ATTRIBUTE),10,6,0.4162,8,-5.8123,False,False,False
+Q5,role_limit,143,77.0;77.1;77.2;77.3;77.4;77.5;77.6,SYSTEM TILES,27,4,0.4267,9,-7.0998,False,False,False
+Q5,role_limit,54,30.0;30.1;30.2,DIPLOMACY (STRATEGY CARD),14,7,0.4129,10,-7.9966,False,False,False
+Q6,exception_corner,49,26.0;26.1;26.2;26.3,CUSTODIANS TOKEN,13,3,0.4096,1,-2.0717,False,True,True
+Q6,exception_corner,47,24.4;24.5;24.6;24.7,CONTROL,13,2,0.413,2,-4.9457,False,True,True
+Q6,exception_corner,152,79.15;79.16;79.17;79.18;79.19,TECHNOLOGY,28,5,0.3571,3,-7.4524,False,False,True
+Q6,exception_corner,46,24.0;24.1;24.2;24.3;24.4,CONTROL,12,6,0.3519,4,-9.51,False,False,False
+Q6,exception_corner,58,31.9;31.10,ELIMINATION,14,7,0.3519,5,-9.5277,False,False,False
+Q6,exception_corner,90,52.8;52.9;52.10;52.11;52.12,OBJECTIVE CARDS,19,8,0.3336,6,-9.5645,False,False,False
+Q6,exception_corner,61,34.0;34.1;34.2;34.3;34.4,FLEET POOL,15,4,0.3882,7,-9.6713,False,False,False
+Q6,exception_corner,54,30.0;30.1;30.2,DIPLOMACY (STRATEGY CARD),14,9,0.3264,8,-10.0691,False,False,False
+Q6,exception_corner,77,44.4;44.5,INVASION,17,10,0.3145,9,-10.7068,False,False,False
+Q6,exception_corner,34,19.0;19.1;19.2;19.3,COMMAND TOKENS,11,1,0.4195,10,-11.1149,False,True,False
+Q7,negation_constraint,9,3.3;3.4;3.5,ACTION PHASE,7,1,0.5007,1,3.996,True,True,True
+Q7,negation_constraint,8,3.0;3.1;3.2;3.3,ACTION PHASE,7,2,0.4972,2,1.7105,True,True,True
+Q7,negation_constraint,10,4.0;4.1;4.2;4.3,ACTIVE PLAYER,7,3,0.4245,3,-1.0469,False,True,True
+Q7,negation_constraint,63,36.0;36.1;36.2;36.3,GAME ROUND,15,4,0.4146,4,-3.9066,False,False,False
+Q7,negation_constraint,134,71.0;71.1;71.2;71.3,STRATEGIC ACTION,26,5,0.4135,5,-4.0641,False,False,False
+Q7,negation_constraint,57,31.5;31.6;31.7;31.8;31.9,ELIMINATION,14,7,0.3535,6,-5.7422,False,False,False
+Q7,negation_constraint,52,28.0,DEFENDER,13,10,0.3392,7,-6.5898,False,False,False
+Q7,negation_constraint,94,53.0;53.1,OPPONENT,20,6,0.3745,8,-7.5249,False,False,False
+Q7,negation_constraint,137,73.0;73.1,STRATEGY PHASE,26,9,0.3404,9,-9.2549,False,False,False
+Q7,negation_constraint,161,83.4;83.5;83.6,TRANSACTIONS,30,8,0.3528,10,-9.4773,False,False,False
+Q8,buried_vital_chunk,142,76.3;76.4;76.5;76.6,SUSTAIN DAMAGE (UNIT ABILITY),27,3,0.4977,1,-1.3978,False,True,True
+Q8,buried_vital_chunk,141,76.0;76.1;76.2;76.3,SUSTAIN DAMAGE (UNIT ABILITY),27,2,0.5034,2,-1.9014,True,True,True
+Q8,buried_vital_chunk,23,10.2,ANTI-FIGHTER BARRAGE (UNIT ABILITY),9,7,0.3967,3,-4.7407,False,False,True
+Q8,buried_vital_chunk,21,10.0,ANTI-FIGHTER BARRAGE (UNIT ABILITY),9,10,0.3587,4,-5.7279,False,False,False
+Q8,buried_vital_chunk,32,17.0;17.1;17.2,COMBAT (ATTRIBUTE),10,5,0.4193,5,-5.9847,False,False,False
+Q8,buried_vital_chunk,53,29.0;29.1;29.2,DESTROYED,14,1,0.5054,6,-6.27,False,True,False
+Q8,buried_vital_chunk,28,15.0,BOMBARDMENT (UNIT ABILITY),10,6,0.3998,7,-6.5911,False,False,False
+Q8,buried_vital_chunk,30,15.1;15.2,BOMBARDMENT (UNIT ABILITY),10,4,0.4427,8,-7.9395,False,False,False
+Q8,buried_vital_chunk,98,56.0;56.1;56.2;56.3,PLANETARY SHIELD (UNIT ABILITY),20,8,0.3756,9,-8.2984,False,False,False
+Q8,buried_vital_chunk,29,15.1,BOMBARDMENT (UNIT ABILITY),10,9,0.3732,10,-9.9883,False,False,False
+Q9,role_limit,160,83.0;83.1;83.2;83.3;83.4,TRANSACTIONS,30,8,0.3039,1,-0.3348,True,False,True
+Q9,role_limit,9,3.3;3.4;3.5,ACTION PHASE,7,1,0.3637,2,-2.7364,False,True,True
+Q9,role_limit,159,82.5;82.6;82.7,TRADE GOODS,29,6,0.315,3,-2.8576,False,False,True
+Q9,role_limit,8,3.0;3.1;3.2;3.3,ACTION PHASE,7,2,0.3436,4,-3.5777,False,True,False
+Q9,role_limit,10,4.0;4.1;4.2;4.3,ACTIVE PLAYER,7,4,0.3187,5,-4.8361,False,False,False
+Q9,role_limit,137,73.0;73.1,STRATEGY PHASE,26,3,0.3227,6,-6.7408,False,True,False
+Q9,role_limit,138,73.1;73.2,STRATEGY PHASE,26,5,0.3181,7,-6.822,False,False,False
+Q9,role_limit,6,2.0;2.1;2.2;2.3;2.4;2.5,ACTION CARDS,7,10,0.3005,8,-7.8197,False,False,False
+Q9,role_limit,110,60.4;60.5;60.6;60.7,PROMISSORY NOTES,22,7,0.3128,9,-9.0144,False,False,False
+Q9,role_limit,157,81.3;81.4;81.5,TRADE (STRATEGY CARD),29,9,0.3008,10,-9.8019,False,False,False
+Q10,negation_constraint,27,14.0;14.1,BLOCKADED,10,7,0.3477,1,-9.4005,True,False,True
+Q10,negation_constraint,83,49.3;49.4,MOVEMENT,18,4,0.361,2,-10.2046,False,False,True
+Q10,negation_constraint,84,49.4;49.5;49.6,MOVEMENT,18,8,0.3323,3,-10.2182,False,False,True
+Q10,negation_constraint,144,78.0;78.1;78.2,TACTICAL ACTION,27,9,0.3121,4,-10.3591,False,False,False
+Q10,negation_constraint,129,68.0;68.1;68.2;68.3;68.4,SPACE DOCK,25,5,0.3582,5,-10.7978,False,False,False
+Q10,negation_constraint,115,65.0;65.1;65.2;65.3,SHIPS,23,1,0.4738,6,-10.829,False,True,False
+Q10,negation_constraint,118,66.3;66.4;66.5;66.6,SPACE CANNON (UNIT ABILITY),23,10,0.31,7,-10.9584,False,False,False
+Q10,negation_constraint,61,34.0;34.1;34.2;34.3;34.4,FLEET POOL,15,3,0.3651,8,-11.1578,False,True,False
+Q10,negation_constraint,105,58.4;58.5;58.6,PRODUCING UNITS,21,2,0.3735,9,-11.1745,False,True,False
+Q10,negation_constraint,107,59.1;59.2,PRODUCTION (UNIT ABILITY),21,6,0.3557,10,-11.2608,False,False,False
