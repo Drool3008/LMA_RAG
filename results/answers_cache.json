@@ -1,0 +1,142 @@
+{
+  "a1a5599de5aa9a6a03c850e110af8a7ea745b844ae8ac09f89ac38276eba7ad9": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "a1a5599de5aa9a6a03c850e110af8a7ea745b844ae8ac09f89ac38276eba7ad9",
+    "answer": "According to Rule 2.4, a player's hand can have a maximum of seven action cards, though a game effect can increase or decrease this limit. If a player ever has more than seven action cards, they must choose seven cards to keep and discard the rest (Rule 2.4).\n\n**Rules cited:** Rule 2.4",
+    "n_context_chunks": 3,
+    "seconds": 5.981
+  },
+  "beaf49bf97afb16525cfeaa82d238a7ae105d0da7f408fc4d525f884bc18f38e": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "beaf49bf97afb16525cfeaa82d238a7ae105d0da7f408fc4d525f884bc18f38e",
+    "answer": "According to Rule 2.4, a player\u2019s hand can have a maximum of seven action cards, and if a player ever has more than seven, they must choose seven to keep and discard the rest. However, game effects can increase or decrease this hand limit. \n\n[Rule 2.4]",
+    "n_context_chunks": 3,
+    "seconds": 3.734
+  },
+  "03c59ba6bc057adcd3d5f289ed4d029ab8d0e2679ab93492c11f87d61c97492d": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "03c59ba6bc057adcd3d5f289ed4d029ab8d0e2679ab93492c11f87d61c97492d",
+    "answer": "No, a ship cannot move into a supernova (a star that has exploded). Rule 65.0 classifies carriers, cruisers, dreadnoughts, destroyers, fighters, war suns, and flagships as ships. Rule 75.1 explicitly states that a ship cannot move through or into a supernova.\n\n[Rule 65.0, Rule 75.1]",
+    "n_context_chunks": 3,
+    "seconds": 5.34
+  },
+  "33cf9c6d47f1102efc3f1fb16c6ddd15bcfd4f73f30172b15c3d81e378791549": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "33cf9c6d47f1102efc3f1fb16c6ddd15bcfd4f73f30172b15c3d81e378791549",
+    "answer": "The provided rules state that a ship cannot move through or into a supernova. Because warships fall under the definition of ships, they are subject to this restriction. Therefore, a warship cannot fly into a supernova. \n\nRelying on Rules: Rule 11 (11.0, 11.1), Rule 65 (65.0), and Rule 75 (75.0, 75.1).",
+    "n_context_chunks": 3,
+    "seconds": 16.435
+  },
+  "2d7d8d754c700621f009f36bbc10ca9c3a6fea19f05036b7523ddea74ecf74e6": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "2d7d8d754c700621f009f36bbc10ca9c3a6fea19f05036b7523ddea74ecf74e6",
+    "answer": "The provided rules do not cover this.",
+    "n_context_chunks": 3,
+    "seconds": 6.113
+  },
+  "34ac94c1261c9e92c9bd58a3073fa692f9701986cd6c6ad6b12186ec303c8b3d": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "34ac94c1261c9e92c9bd58a3073fa692f9701986cd6c6ad6b12186ec303c8b3d",
+    "answer": "The provided rules do not cover this.",
+    "n_context_chunks": 3,
+    "seconds": 1.627
+  },
+  "044af34ed93eab6a11c88ecb91956b9e484cf99f5cdc30b383b4c4052ecb2632": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "044af34ed93eab6a11c88ecb91956b9e484cf99f5cdc30b383b4c4052ecb2632",
+    "answer": "No, you cannot perform a tactical action on a system that already contains one of your command tokens. During Step 1 (Activation) of a tactical action, you must activate a system that does not contain one of your command tokens by placing a token from your tactic pool into that system (Rule 78.1). Additionally, during Step 2 (Movement), you can only move ships out of systems that do not contain one of your command tokens (Rule 78.2).\n\nCited Rules: 78.1, 78.2",
+    "n_context_chunks": 3,
+    "seconds": 3.723
+  },
+  "7d688df1e962e6a4f34d39ea8d2e2a04f101d9ccb0f6884dc5e042e8b44b9201": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "7d688df1e962e6a4f34d39ea8d2e2a04f101d9ccb0f6884dc5e042e8b44b9201",
+    "answer": "Yes, you can take a tactical action in a system you have already claimed, provided it does not currently contain one of your command tokens. The rules specify that a player cannot activate a system that already contains one of their own command tokens, but command tokens belonging to other players do not prevent activation. \n\n(Rules 5.1, 5.2, 5.3, 78.1)",
+    "n_context_chunks": 3,
+    "seconds": 3.707
+  },
+  "599422037832b32c2d44e169695ad72f3f77ca5867d9824425c74f70fd37ff17": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "599422037832b32c2d44e169695ad72f3f77ca5867d9824425c74f70fd37ff17",
+    "answer": "Based on Rule 54.3, each planet can have a maximum of two PDS units. \n\n*(Cited: Rule 54.3)*",
+    "n_context_chunks": 3,
+    "seconds": 4.306
+  },
+  "c6011f6a07d6eacf53daa9f4110fedeb14c7ebdc61582f26b6e5a5adfc3583c6": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "c6011f6a07d6eacf53daa9f4110fedeb14c7ebdc61582f26b6e5a5adfc3583c6",
+    "answer": "Based on the provided rules, each planet can have a maximum of two PDS units. \n\n(Rule 54.3)",
+    "n_context_chunks": 3,
+    "seconds": 15.304
+  },
+  "492f5e791ca83e012a8e3e058d2b01f10b596f1cf8b5e20dabdcf79a64bf2437": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "492f5e791ca83e012a8e3e058d2b01f10b596f1cf8b5e20dabdcf79a64bf2437",
+    "answer": "According to Rule 26.2, the active player may remove the custodians token from Mecatol Rex before the \"Commit Ground Forces\" step of an invasion. To do so, that player must spend six influence and commit at least one ground force to land on the planet.\n\n(Rule 26.2)",
+    "n_context_chunks": 3,
+    "seconds": 4.369
+  },
+  "dc78ce500f7a2ad2e07855bcb4f1c03edef36cc1a5b5502d01ef89dbc78e6365": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "dc78ce500f7a2ad2e07855bcb4f1c03edef36cc1a5b5502d01ef89dbc78e6365",
+    "answer": "The active player may remove the custodians token from Mecatol Rex. To do so, the player must spend six influence and commit at least one ground force to land on the planet.\n\n(Rule 26.2)",
+    "n_context_chunks": 3,
+    "seconds": 2.29
+  },
+  "588895c4c2663a9a948ea02b641c1a3ebe36a3bb4f119f9c554f5da674a3a015": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "588895c4c2663a9a948ea02b641c1a3ebe36a3bb4f119f9c554f5da674a3a015",
+    "answer": "A player is forbidden from passing their turn until they have performed a strategic action. Additionally, during a three-player or four-player game, a player cannot pass until they have exhausted both of their strategy cards. \n\n(Rule 3.4)",
+    "n_context_chunks": 3,
+    "seconds": 1.494
+  },
+  "5a778274fbf178baccffacf06faf3ded538974f8425cf14ecb0d97f755b4e074": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "5a778274fbf178baccffacf06faf3ded538974f8425cf14ecb0d97f755b4e074",
+    "answer": "No, a unit does not fight less effectively when it takes damage. According to rule 76.2, a damaged unit does not have reduced capabilities and is functionally the same as an undamaged unit, except that it cannot use the \"Sustain Damage\" ability again until it is repaired.\n\n**Source Rule:** 76.2",
+    "n_context_chunks": 3,
+    "seconds": 1.83
+  },
+  "fc479416cbc4829d883f1a30b3bedd059d699f9094762653d0901f56b33250e9": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "fc479416cbc4829d883f1a30b3bedd059d699f9094762653d0901f56b33250e9",
+    "answer": "No, a unit does not fight less effectively when it takes damage. According to Rule 76.2, a damaged unit does not have reduced capabilities and is functionally the same as an undamaged unit, except that it cannot use the \"Sustain Damage\" ability again.\n\n(Relying on Rule 76.2)",
+    "n_context_chunks": 3,
+    "seconds": 1.581
+  },
+  "5a5a493e6d0c38f44118e868c29c773380331996fd491d42b75f4e1317e583e8": {
+    "model": "gemini-3.5-flash",
+    "prompt_sha256": "5a5a493e6d0c38f44118e868c29c773380331996fd491d42b75f4e1317e583e8",
+    "answer": "The provided rules do not cover this.",
+    "n_context_chunks": 3,
+    "seconds": 5.216
+  },
+  "9843b0fe5024e9a70ee59b19d29f8c227d70200e612b20499f335f53c5f03bb2": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "9843b0fe5024e9a70ee59b19d29f8c227d70200e612b20499f335f53c5f03bb2",
+    "answer": "During the active player\u2019s turn, they may resolve up to one transaction with each of their neighbors (Rule 83.1). A transaction allows the exchange of commodities, trade goods, and promissory notes (Rule 83.0). The provided rules do not specify a limit on the number of individual items or \"swaps\" exchanged within that single transaction, as long as the terms are agreed upon (Rule 83.4).",
+    "n_context_chunks": 3,
+    "seconds": 9.263
+  },
+  "f6594ba0470171b8ecbc1a4d3f8f763ba51bb337f145ab4f63e04f73af8403a9": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "f6594ba0470171b8ecbc1a4d3f8f763ba51bb337f145ab4f63e04f73af8403a9",
+    "answer": "The provided rules do not cover this.",
+    "n_context_chunks": 3,
+    "seconds": 4.042
+  },
+  "3f1ca1588dc8730ecfdddae61d0b80f43ccb69f2a160f5c976f36c810f1e6f7e": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "3f1ca1588dc8730ecfdddae61d0b80f43ccb69f2a160f5c976f36c810f1e6f7e",
+    "answer": "You are limited by the number of units in your reinforcements (58.5). Additionally, you cannot produce ships in a system that contains other players\u2019 ships (58.6). Finally, the number of non-fighter ships you can have in a system is limited by the command tokens in your fleet pool (65.2, 34.1, 34.3).",
+    "n_context_chunks": 3,
+    "seconds": 8.625
+  },
+  "2c26abb5daf1190f6e416c14bb5afbc619bc88f452d5eaa847ed45e7a9224ff8": {
+    "model": "gemini-3.1-flash-lite",
+    "cache_key": "2c26abb5daf1190f6e416c14bb5afbc619bc88f452d5eaa847ed45e7a9224ff8",
+    "answer": "Your factory (a unit with \"Production\") cannot produce ships if it is blockaded (Rule 14.1). A unit is blockaded if it is in a system that contains other players' ships but does not contain any of your own ships (Rule 14.0).",
+    "n_context_chunks": 3,
+    "seconds": 13.143
+  }
+}
