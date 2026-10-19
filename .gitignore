@@ -6,3 +6,5 @@ __pycache__/
 data/*.pdf
 .DS_Store
 .claude/
+NOTES.md
+PLAN.md

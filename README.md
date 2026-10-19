@@ -17,11 +17,13 @@ Models: `sentence-transformers/all-MiniLM-L6-v2` (bi-encoder),
 | path | what it is |
 |---|---|
 | `notebooks/rag_baseline_vs_reranking.ipynb` | **the deliverable** — both pipelines, failure-mode analysis, latency, scaling |
-| `NOTES.md` | every design decision with its reasoning, plus observations and surprises |
 | `docs/CELL_GUIDE.md` | cell-by-cell walkthrough of the notebook: what each cell does, why, which assignment section it serves, and the gotchas |
-| `PLAN.md` | the plan the work followed, mapped to the assignment sections |
 | `results/` | generated CSVs + `answers.md` (Answer 1 vs Answer 2) |
 | `RAG_LMA_Assignment_v1.pdf` | the assignment brief |
+
+The working notes the report is written from (`NOTES.md`, `PLAN.md`) are deliberately kept
+out of the repo — the report has to be in the author's own words, so the decision log stays
+local. `docs/CELL_GUIDE.md` covers everything needed to read the code itself.
 
 ## Setup
 
@@ -30,6 +32,15 @@ Python **3.12** (the version this stack is best supported on):
 ```bash
 uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python -r requirements.txt
+cp .env.example .env        # then paste your key: GEMINI_API_KEY=...
+.venv/bin/python -m ipykernel install --user --name lma_rag --display-name "Python 3 (LMA_RAG .venv)"
+```
+
+Without `uv`, plain venv and pip do the same job:
+
+```bash
+python3.12 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 cp .env.example .env        # then paste your key: GEMINI_API_KEY=...
 .venv/bin/python -m ipykernel install --user --name lma_rag --display-name "Python 3 (LMA_RAG .venv)"
 ```
@@ -60,6 +71,8 @@ publisher's file is not redistributed here — only the URL and the loader).
 - **Restart-and-run-all is the supported path**; the committed outputs came from exactly that.
 - **API quota:** every generated answer is cached to `results/answers_cache.json` keyed by
   `(model, sha256(prompt))` and never regenerated, so re-running costs **zero** API calls.
+  If no model responds at all (quota spent, or the service is briefly down), the notebook says so
+  and still runs end to end on the cached answers.
   A fresh run with an empty cache uses at most 18.
 - **Model ids expire.** The generation model lives in one variable,
   `GEN_MODEL_CANDIDATES`; the smoke test picks the first candidate that responds.
